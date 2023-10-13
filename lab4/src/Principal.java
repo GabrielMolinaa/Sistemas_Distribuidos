@@ -1,3 +1,4 @@
+
 /**
   * Laboratorio 4  
   * Autor: Lucio Agostinho Rocha
@@ -20,8 +21,8 @@ public class Principal {
 			.get("src\\fortunes_openbsd.txt");
 	private int NUM_FORTUNES = 0;
 
-	private FileReader fr; 
-	
+	private FileReader fr;
+
 	public class FileReader {
 
 		public int countFortunes() throws FileNotFoundException {
@@ -41,7 +42,7 @@ public class Principal {
 
 					line = br.readLine();
 
-				}// fim while
+				} // fim while
 
 				System.out.println(lineCount);
 			} catch (IOException e) {
@@ -78,7 +79,7 @@ public class Principal {
 					System.out.println(fortune.toString());
 
 					System.out.println(lineCount);
-				}// fim while
+				} // fim while
 
 			} catch (IOException e) {
 				System.out.println("SHOW: Excecao na leitura do arquivo.");
@@ -88,8 +89,8 @@ public class Principal {
 		public String read(HashMap<Integer, String> hm)
 				throws FileNotFoundException {
 
-			String result="-2";
-			
+			String result = "-2";
+
 			InputStream is = new BufferedInputStream(new FileInputStream(
 					path.toString()));
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -103,7 +104,7 @@ public class Principal {
 				System.out.println(hm.get(lineSelected));
 
 				result = hm.get(lineSelected);
-				
+
 			} catch (IOException e) {
 				System.out.println("SHOW: Excecao na leitura do arquivo.");
 			}
@@ -114,22 +115,22 @@ public class Principal {
 				throws FileNotFoundException {
 
 			OutputStream os = new BufferedOutputStream(new FileOutputStream(
-					path.toString(),true)); //true=append
+					path.toString(), true)); // true=append
 			try (BufferedWriter bw = new BufferedWriter(
-										new OutputStreamWriter(os))) {
+					new OutputStreamWriter(os))) {
 
 				Scanner input = new Scanner(System.in);
-				//System.out.print("Add fortune: ");
-				//String fortune = input.next();
+				// System.out.print("Add fortune: ");
+				// String fortune = input.next();
 
 				NUM_FORTUNES++;
 
 				hm.put(NUM_FORTUNES, fortune);
 
 				System.out.println(hm.get(NUM_FORTUNES));
-				
-				//Append file
-				bw.append("\n%\n"+fortune);
+
+				// Append file
+				bw.append("\n%\n" + fortune);
 
 			} catch (IOException e) {
 				System.out.println("SHOW: Excecao na leitura do arquivo.");
@@ -137,7 +138,7 @@ public class Principal {
 		}
 	}
 
-	public void write(String fortune){
+	public void write(String fortune) {
 		fr = new FileReader();
 		try {
 			NUM_FORTUNES = fr.countFortunes();
@@ -149,19 +150,20 @@ public class Principal {
 			e.printStackTrace();
 		}
 	}
-	public String read(){
-		String result="-1";
-		
+
+	public String read() {
+		String result = "-1";
+
 		fr = new FileReader();
 		try {
 			NUM_FORTUNES = fr.countFortunes();
 			HashMap hm = new HashMap<Integer, String>();
 			fr.parser(hm);
-			result = fr.read(hm);			
+			result = fr.read(hm);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return result;
-	}	
+	}
 
 }

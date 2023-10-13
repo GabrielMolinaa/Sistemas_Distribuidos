@@ -1,7 +1,7 @@
 /**
  * Laboratorio 3  
- * Autor: Lucio Agostinho Rocha
- * Ultima atualizacao: 04/04/2023
+  * Autor: Gabriel Molina e Pedro Parra
+  * Ultima atualizacao: 13/10/2023
  */
 
 import java.io.*;
