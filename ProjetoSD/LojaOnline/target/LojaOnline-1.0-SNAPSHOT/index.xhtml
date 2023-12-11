@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Loja Online</title>
+        <!-- Adicione estilos aqui se necessário -->
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/styles.css" />
+
+    </h:head>
+    <h:body>
+        <div class="store">
+            <h:form>
+                <div class="input-group">
+                    <label for="produto">Produto:</label>
+                    <!-- Utilize h:selectOneMenu para criar um menu suspenso -->
+                    <h:selectOneMenu id="produto" value="#{jsfLoja.produto}">
+                        <!-- Preencha o menu suspenso com os produtos disponíveis -->
+                        <f:selectItems value="#{jsfLoja.produtosDisponiveis}" />
+                    </h:selectOneMenu>
+                </div>
+                <div class="input-group">
+                    <label for="quantidade">Quantidade:</label>
+                    <h:inputText id="quantidade" value="#{jsfLoja.quantidade}" />
+                </div>
+                <div class="input-group">
+                    <label for="valorUnitario">Valor Unitário:</label>
+                    <h:inputText id="valorUnitario" value="#{jsfLoja.valorUnitario}" />
+                </div>
+                <div class="button-group">
+                    <h:commandButton  value="Realizar Compra" action="#{jsfLoja.realizarCompra()}" />
+                    <h:commandButton  value="Consultar Compras" action="#{jsfLoja.consultarCompras()}" />
+                    <h:commandButton value="Simular Compras Concorrentes" action="#{jsfLoja.simularComprasConcorrentes}" />
+                    <h:commandButton value="Ver Estoque" action="#{jsfLoja.exibirEstoque}" />
+                   
+                </div>
+                <!-- Adicione uma tabela ou outra estrutura para exibir a lista de compras -->
+                <h:dataTable value="#{jsfLoja.listaCompras}" var="compra">
+                    <h:column>
+                        <f:facet name="header">Produto</f:facet>
+                            #{compra.produto}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Quantidade</f:facet>
+                            #{compra.quantidade}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Valor Unitário</f:facet>
+                            #{compra.valorUnitario}
+                    </h:column>
+                    <!-- Adicione mais colunas conforme necessário -->
+                </h:dataTable>
+            </h:form>
+        </div>
+        <script>
+        // Verifica se a variável semEstoque é verdadeira e exibe o popup
+        if (#{jsfLoja.semEstoque}) {
+            alert("Desculpe, o produto selecionado está sem estoque.");
+        }
+    </script>
+    </h:body>
+</html>

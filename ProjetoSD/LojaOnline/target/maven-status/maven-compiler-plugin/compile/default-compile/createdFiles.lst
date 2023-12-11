@@ -1,0 +1,8 @@
+br\ejb\EjbConsumidor.class
+br\JakartaRestConfiguration.class
+br\ws\LojaService.class
+br\ejb\EjbLoja.class
+br\jsf\JsfLoja.class
+br\resources\JakartaEE10Resource.class
+br\ws\LojaServicePublisher.class
+br\ws\LojaClient.class
