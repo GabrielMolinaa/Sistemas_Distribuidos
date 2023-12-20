@@ -6,8 +6,6 @@ Projeto de uma loja online utilizando as seguintes tecnologias:
 
 - Enterprise JavaBeans
 
-
 - JavaServer Faces
-
 
 - Java Message Service  
